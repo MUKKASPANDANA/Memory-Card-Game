@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <header>
+            <h1>🧠 Memory Card Game</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="label">Moves:</span>
+                    <span id="moves">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Time:</span>
+                    <span id="timer">00:00</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Streak:</span>
+                    <span id="streak">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-controls">
+            <select id="difficulty">
+                <option value="easy">Easy (4x4)</option>
+                <option value="medium">Medium (4x6)</option>
+                <option value="hard">Hard (6x6)</option>
+                <option value="expert">Expert (8x6)</option>
+            </select>
+            
+            <select id="theme">
+                <option value="emojis">🎯 Emojis</option>
+                <option value="animals">🐶 Animals</option>
+                <option value="fruits">🍎 Fruits</option>
+                <option value="space">🚀 Space</option>
+                <option value="symbols">💎 Symbols</option>
+            </select>
+            
+            <button id="new-game">New Game</button>
+            <button id="hint-btn" title="Get a hint (costs 50 points)">💡 Hint</button>
+            <button id="pause-btn">⏸️ Pause</button>
+            <button id="sound-toggle" class="sound-on">🔊</button>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-text" id="progress-text">0 / 0 pairs found</span>
+        </div>
+
+        <div class="game-board" id="game-board">
+            <!-- Cards will be generated dynamically -->
+        </div>
+
+        <div class="power-ups">
+            <div class="power-up" id="freeze-time" title="Freeze timer for 10 seconds">
+                ❄️ <span>Freeze Time</span>
+                <div class="cooldown" id="freeze-cooldown"></div>
+            </div>
+            <div class="power-up" id="peek-cards" title="Peek at all cards for 2 seconds">
+                👁️ <span>Peek Cards</span>
+                <div class="cooldown" id="peek-cooldown"></div>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div id="congratulations" class="modal hidden">
+            <div class="modal-content">
+                <h2>🎉 Congratulations! 🎉</h2>
+                <p>You completed the game!</p>
+                <div class="final-stats">
+                    <p>Moves: <span id="final-moves"></span></p>
+                    <p>Time: <span id="final-time"></span></p>
+                    <p>Score: <span id="final-score"></span></p>
+                    <p>Best Streak: <span id="final-streak"></span></p>
+                    <div class="rating" id="rating"></div>
+                </div>
+                <button id="play-again">Play Again</button>
+                <button id="close-modal">Close</button>
+            </div>
+        </div>
+
+        <div id="pause-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>⏸️ Game Paused</h2>
+                <p>Take a break! Click resume when you're ready.</p>
+                <button id="resume-game">Resume Game</button>
+                <button id="quit-game">Quit Game</button>
+            </div>
+        </div>
+
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>⚙️ Settings</h2>
+                <div class="setting-group">
+                    <label>Card Flip Speed:</label>
+                    <input type="range" id="flip-speed" min="300" max="1000" value="600">
+                </div>
+                <div class="setting-group">
+                    <label>Hint Cost:</label>
+                    <input type="range" id="hint-cost" min="25" max="100" value="50">
+                </div>
+                <button id="save-settings">Save Settings</button>
+                <button id="close-settings">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle effects container -->
+    <div id="particles"></div>
+    
+    <!-- Sound effects (data URLs would go here in a real implementation) -->
+    <audio id="flip-sound" preload="auto"></audio>
+    <audio id="match-sound" preload="auto"></audio>
+    <audio id="win-sound" preload="auto"></audio>
+    <audio id="error-sound" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
