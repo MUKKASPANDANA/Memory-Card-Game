@@ -1,13 +1,13 @@
-🃏 Memory Card Game
+## 🃏 Memory Card Game
 
 A fun and interactive **Memory Card Game** built with **HTML, CSS, and JavaScript**. Players can test and improve their memory skills by matching pairs of cards, with exciting features such as **freeze time**, **peek card**, **multiple difficulty levels**, and **themed card sets**.
 
 
-🚀 **Live Demo**
+## 🚀 **Live Demo**
 (https://memory-card-game-puce-tau.vercel.app/)
 
 
-📌 Features
+## 📌 Features
 
 1. **Freeze Time Feature**
 
