@@ -95,7 +95,11 @@ class MemoryGame {
             this.hideModal(this.congratulationsModal);
             this.startNewGame();
         });
-        this.closeModalButton.addEventListener('click', () => this.hideModal(this.congratulationsModal));
+        this.closeModalButton.addEventListener('click', () => {
+    this.stopTimer(); 
+    this.hideModal(this.congratulationsModal);
+});
+
         this.resumeButton.addEventListener('click', () => this.togglePause());
         this.quitButton.addEventListener('click', () => {
             this.hideModal(this.pauseModal);
@@ -707,4 +711,5 @@ document.head.appendChild(style);
 // Initialize the game when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     new MemoryGame();
+
 });
